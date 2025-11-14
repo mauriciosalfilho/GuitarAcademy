@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style-signup.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -13,34 +12,428 @@
       referrerpolicy="no-referrer"
     />
     <title>Guitar Academy</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Montserrat", sans-serif;
+        color: #fff;
+        overflow: hidden;
+      }
+
+      html,
+      body,
+      .wrapper {
+        height: 100%;
+        color: #fff;
+      }
+
+      body {
+        background: linear-gradient(
+          to bottom,
+          #0d121f 0%,
+          #0a0f19 80%,
+          #0a0a0a 100%
+        );
+        display: grid;
+        place-items: center;
+        margin: 0;
+        padding: 0 24px;
+      }
+
+      .login-card {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        margin: 0 20px;
+        padding: 20px 30px 20px;
+        border-radius: 10px;
+        background: #101214;
+        border: 1px solid #2a2f36;
+        text-align: center;
+        color: #fff;
+      }
+
+      .login-card i {
+        font-size: 48px;
+        color: #73adff;
+        margin-bottom: 12px;
+      }
+
+      .login-card h2 {
+        font-size: 36px;
+        font-weight: 600;
+        margin: 0 0 12px;
+        color: #a3c9ff;
+      }
+
+      .login-card h3 {
+        color: #ccc;
+        margin: 0 0 30px;
+        font-weight: 500;
+        font-size: 1rem;
+      }
+
+      .login-form {
+        width: 100%;
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .wizard-container {
+        position: relative;
+        width: 100%;
+      }
+
+      .login-form input,
+      .login-form button {
+        width: 100%;
+        font-family: inherit;
+      }
+
+      .login-form button {
+        height: 50px;
+      }
+
+      .login-form input {
+        border: 1px solid #2a2f36;
+        font-size: 15px;
+        padding: 16px;
+        border-radius: 10px;
+        background-color: #101214;
+        color: #fff;
+        transition: border-color 0.3s ease;
+      }
+
+      .login-form input:hover {
+        border-color: #73adff;
+      }
+
+      .login-form input:focus {
+        outline: none;
+        border-color: #73adff;
+      }
+
+      .login-form button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0.75rem 1.8rem;
+        background-color: #30363d;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s ease, color 0.3s ease,
+          transform 0.3s ease;
+        user-select: none;
+      }
+
+      .login-form button:hover {
+        background-color: #a3c9ff;
+        color: #1a2238;
+        transform: translateY(-2px);
+      }
+
+      .login-form a {
+        color: #a3c9ff;
+        font-size: 0.9rem;
+        text-align: left;
+        text-decoration: none;
+        margin-bottom: 6px;
+        transition: color 0.3s ease;
+      }
+
+      .login-form a:hover {
+        color: #a3c9ff;
+      }
+
+      .signup-link {
+        text-align: center;
+        margin-top: 8px;
+      }
+
+      .wizard-page {
+        display: grid;
+        gap: 16px;
+        transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .wizard-page.hidden {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .wizard-page.slide-out-left {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+
+      .wizard-page.slide-out-right {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+
+      .wizard-page.slide-in-left {
+        animation: slideInFromRight 0.4s ease-in-out forwards;
+      }
+
+      .wizard-page.slide-in-right {
+        animation: slideInFromLeft 0.4s ease-in-out forwards;
+      }
+
+      @keyframes slideInFromRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInFromLeft {
+        from {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .button-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .button-group.single {
+        grid-template-columns: 1fr;
+      }
+
+      @keyframes rotate {
+        100% {
+          background-position: 15% 50%;
+        }
+      }
+
+      @media (width < 1024px) {
+        body {
+          padding: 0 16px;
+        }
+        .login-card {
+          padding: 16px 20px 16px;
+        }
+        .login-form input {
+          padding: 8px;
+        }
+      }
+
+      @media (width >= 500px) {
+        body {
+          padding: 0;
+        }
+        .login-card {
+          margin: 0;
+          width: 400px;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="login-card">
       <i class="fa-solid fa-graduation-cap"></i>
 
-      <form class="login-form">
-        <input type="text" placeholder="Usuário" />
-        <input type="text" placeholder="E-mail" />
-        <input type="tel" id="telefone" placeholder="Telefone" maxlength="16" />
-        <input type="password" placeholder="Senha" />
-        <input
-          id="cpf"
-          name="cpf"
-          placeholder="CPF"
-          inputmode="numeric"
-          maxlength="14"
-          autocomplete="off"
-        />
-        <div
-          class="g-recaptcha"
-          data-sitekey="6LeLzQksAAAAAL_djyzCiKsHEUq8qosxd3RbZFvY"
-        ></div>
-        <a href="#">Esqueceu sua senha?</a>
-        <button type="submit">CRIAR CONTA</button>
+      <form class="login-form" id="wizardForm">
+        <div class="wizard-container">
+          <div class="wizard-page" id="page1">
+            <input type="email" id="email" placeholder="E-mail" />
+            <input type="password" id="password" placeholder="Senha" />
+            <div class="button-group single">
+              <button type="button" id="nextBtn">Próximo</button>
+            </div>
+          </div>
+          <div class="wizard-page hidden" id="page2">
+            <input
+              type="tel"
+              id="telefone"
+              placeholder="Telefone"
+              maxlength="16"
+            />
+            <input
+              id="cpf"
+              name="cpf"
+              placeholder="CPF"
+              inputmode="numeric"
+              maxlength="14"
+              autocomplete="off"
+            />
+            <div
+              class="g-recaptcha"
+              data-sitekey="6LeLzQksAAAAAL_djyzCiKsHEUq8qosxd3RbZFvY"
+            ></div>
+            <div class="button-group">
+              <button type="button" id="backBtn">Voltar</button>
+              <button type="submit">Criar Conta</button>
+            </div>
+          </div>
+        </div>
+
         <p class="signup-link">Já tem uma conta? <a href="#">Entrar</a></p>
       </form>
     </div>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+      const page1 = document.getElementById("page1");
+      const page2 = document.getElementById("page2");
+      const nextBtn = document.getElementById("nextBtn");
+      const backBtn = document.getElementById("backBtn");
+      const form = document.getElementById("wizardForm");
+
+      nextBtn.addEventListener("click", () => {
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+
+        if (email.value && password.value) {
+          page1.classList.add("slide-out-left");
+
+          setTimeout(() => {
+            page1.classList.add("hidden");
+            page1.classList.remove("slide-out-left");
+            page2.classList.remove("hidden");
+            page2.classList.add("slide-in-left");
+
+            setTimeout(() => {
+              page2.classList.remove("slide-in-left");
+            }, 400);
+          }, 400);
+        } else {
+          email.reportValidity();
+          password.reportValidity();
+        }
+      });
+
+      backBtn.addEventListener("click", () => {
+        page2.classList.add("slide-out-right");
+
+        setTimeout(() => {
+          page2.classList.add("hidden");
+          page2.classList.remove("slide-out-right");
+          page1.classList.remove("hidden");
+          page1.classList.add("slide-in-right");
+
+          setTimeout(() => {
+            page1.classList.remove("slide-in-right");
+          }, 400);
+        }, 400);
+      });
+
+      form.addEventListener("submit", (e) => {});
+
+      (function () {
+        const cpfInput = document.getElementById("cpf");
+
+        function formatCPF(value) {
+          const digits = value.replace(/\D/g, "").slice(0, 11);
+          const parts = [];
+          if (digits.length > 0) parts.push(digits.slice(0, 3));
+          if (digits.length > 3) parts.push(digits.slice(3, 6));
+          if (digits.length > 6) parts.push(digits.slice(6, 9));
+          let formatted = parts.join(".");
+          if (digits.length > 9) {
+            formatted += (formatted ? "-" : "") + digits.slice(9, 11);
+          }
+          return formatted;
+        }
+
+        cpfInput.addEventListener("input", (e) => {
+          const formatted = formatCPF(e.target.value);
+          e.target.value = formatted;
+        });
+
+        cpfInput.addEventListener("keydown", (e) => {
+          const allowed = [
+            "Backspace",
+            "ArrowLeft",
+            "ArrowRight",
+            "Delete",
+            "Tab",
+            "Home",
+            "End",
+          ];
+          if (allowed.includes(e.key)) return;
+          if (e.ctrlKey || e.metaKey) return;
+          if (!/^\d$/.test(e.key)) e.preventDefault();
+        });
+
+        cpfInput.addEventListener("paste", (e) => {
+          e.preventDefault();
+          const text = (e.clipboardData || window.clipboardData).getData(
+            "text"
+          );
+          const digits = text.replace(/\D/g, "").slice(0, 11);
+          cpfInput.value = formatCPF(digits);
+        });
+      })();
+
+      (function () {
+        const telefoneInput = document.getElementById("telefone");
+        function formatTelefone(value) {
+          const digits = value.replace(/\D/g, "").slice(0, 11);
+          let formatted = "";
+          if (digits.length > 0) formatted += "(" + digits.slice(0, 2);
+          if (digits.length >= 3) formatted += ") " + digits.slice(2, 7);
+          if (digits.length >= 8) formatted += "-" + digits.slice(7, 11);
+          return formatted;
+        }
+
+        telefoneInput.addEventListener("input", (e) => {
+          const formatted = formatTelefone(e.target.value);
+          e.target.value = formatted;
+        });
+        telefoneInput.addEventListener("keydown", (e) => {
+          const allowed = [
+            "Backspace",
+            "ArrowLeft",
+            "ArrowRight",
+            "Delete",
+            "Tab",
+            "Home",
+            "End",
+          ];
+          if (allowed.includes(e.key)) return;
+          if (e.ctrlKey || e.metaKey) return;
+          if (!/^\d$/.test(e.key)) e.preventDefault();
+        });
+        telefoneInput.addEventListener("paste", (e) => {
+          e.preventDefault();
+          const text = (e.clipboardData || window.clipboardData).getData(
+            "text"
+          );
+          const digits = text.replace(/\D/g, "").slice(0, 11);
+          telefoneInput.value = formatTelefone(digits);
+        });
+      })();
+    </script>
     <script src="script.js"></script>
   </body>
 </html>
