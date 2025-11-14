@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style-signup.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Guitar Academy</title>
+  </head>
+  <body>
+    <div class="login-card">
+      <i class="fa-solid fa-graduation-cap"></i>
+
+      <form class="login-form">
+        <input type="text" placeholder="Usuário" />
+        <input type="text" placeholder="E-mail" />
+        <input type="tel" id="telefone" placeholder="Telefone" maxlength="16" />
+        <input type="password" placeholder="Senha" />
+        <input
+          id="cpf"
+          name="cpf"
+          placeholder="CPF"
+          inputmode="numeric"
+          maxlength="14"
+          autocomplete="off"
+        />
+        <div
+          class="g-recaptcha"
+          data-sitekey="6LeLzQksAAAAAL_djyzCiKsHEUq8qosxd3RbZFvY"
+        ></div>
+        <a href="#">Esqueceu sua senha?</a>
+        <button type="submit">CRIAR CONTA</button>
+        <p class="signup-link">Já tem uma conta? <a href="#">Entrar</a></p>
+      </form>
+    </div>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="script.js"></script>
+  </body>
+</html>
