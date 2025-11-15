@@ -21,7 +21,6 @@
         padding: 0;
         font-family: "Montserrat", sans-serif;
         color: #fff;
-        overflow: hidden;
       }
 
       html,
@@ -29,6 +28,7 @@
       .wrapper {
         height: 100%;
         color: #fff;
+        overflow: hidden;
       }
 
       body {
@@ -81,7 +81,6 @@
         width: 100%;
         margin: 0;
         position: relative;
-        overflow: hidden;
       }
 
       .wizard-container {
@@ -119,9 +118,9 @@
       }
 
       .login-form button {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 0.75rem 1.8rem;
         background-color: #30363d;
         border: none;
@@ -131,9 +130,6 @@
         font-size: 1rem;
         cursor: pointer;
         text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         transition: background-color 0.3s ease, color 0.3s ease,
           transform 0.3s ease;
         user-select: none;
@@ -269,7 +265,7 @@
             <input type="email" id="email" placeholder="E-mail" />
             <input type="password" id="password" placeholder="Senha" />
             <div class="button-group single">
-              <button type="button" id="nextBtn">Próximo</button>
+              <button type="button" id="nextBtn">PRÓXIMO</button>
             </div>
           </div>
           <div class="wizard-page hidden" id="page2">
@@ -292,8 +288,8 @@
               data-sitekey="6LeLzQksAAAAAL_djyzCiKsHEUq8qosxd3RbZFvY"
             ></div>
             <div class="button-group">
-              <button type="button" id="backBtn">Voltar</button>
-              <button type="submit">Criar Conta</button>
+              <button type="button" id="backBtn">VOLTAR</button>
+              <button type="submit">CRIAR CONTA</button>
             </div>
           </div>
         </div>
@@ -434,6 +430,5 @@
         });
       })();
     </script>
-    <script src="script.js"></script>
   </body>
 </html>
