@@ -263,12 +263,6 @@
         <div class="wizard-container">
           <div class="wizard-page" id="page1">
             <input type="email" name = "email" id="email" placeholder="E-mail" required/>
-            <input type="password" name = "password" id="password" placeholder="Senha" required/>
-            <div class="button-group single">
-              <button type="button" id="nextBtn">PRÓXIMO</button>
-            </div>
-          </div>
-          <div class="wizard-page hidden" id="page2">
             <input
               type="tel"
               name = "telefone",
@@ -287,6 +281,16 @@
               autocomplete="off"
               required
             />
+            <div class="button-group single">
+              <button type="button" id="nextBtn">PRÓXIMO</button>
+            </div>
+          </div>
+          <div class="wizard-page hidden" id="page2">
+            <input type="password" name="password" id="password" placeholder="Senha" required minlength="6"/>
+            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirmar Senha" required>
+            <div id="passwordError" style="color: #ff6b6b; font-size: 0.8rem; text-align: left; display: none; margin-top: -10px; margin-bottom: 5px;">
+              As senhas não coincidem!
+            </div>
             <div
               class="g-recaptcha"
               data-sitekey="6LeLzQksAAAAAL_djyzCiKsHEUq8qosxd3RbZFvY"
@@ -312,9 +316,10 @@
 
       nextBtn.addEventListener("click", () => {
         const email = document.getElementById("email");
-        const password = document.getElementById("password");
+        const telefone = document.getElementById("telefone");
+        const cpf = document.getElementById("cpf")
 
-        if (email.value && password.value) {
+        if (email.value && telefone.value && cpf.value) {
           page1.classList.add("slide-out-left");
 
           setTimeout(() => {
@@ -348,7 +353,37 @@
         }, 400);
       });
 
-      form.addEventListener("submit", (e) => {});
+      form.addEventListener("submit", (e) => {
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm_password');
+        const passwordError = document.getElementById('passwordError');
+        
+        if (password.value !== confirmPassword.value) {
+          e.preventDefault();
+          passwordError.style.display = 'block';
+          password.style.borderColor = '#ff6b6b';
+          confirmPassword.style.borderColor = '#ff6b6b';
+          return false;
+        }
+        return true;
+      });
+      
+      // Adiciona validação em tempo real
+      document.getElementById('confirm_password').addEventListener('input', function() {
+        const password = document.getElementById('password');
+        const confirmPassword = this;
+        const passwordError = document.getElementById('passwordError');
+        
+        if (password.value !== confirmPassword.value) {
+          passwordError.style.display = 'block';
+          password.style.borderColor = '#ff6b6b';
+          confirmPassword.style.borderColor = '#ff6b6b';
+        } else {
+          passwordError.style.display = 'none';
+          password.style.borderColor = '#2a2f36';
+          confirmPassword.style.borderColor = '#2a2f36';
+        }
+      });
 
       (function () {
         const cpfInput = document.getElementById("cpf");
