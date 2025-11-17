@@ -105,8 +105,10 @@
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
         gap: 2rem;
         max-width: 1100px;
-        margin: 0 auto;
+        margin: 2rem auto; /* Adicionado margin vertical */
         align-items: stretch;
+        padding: 1rem; /* Adicionado padding para evitar corte */
+        overflow: visible; /* Garante que o conteúdo não seja cortado */
       }
 
       .plan-card {
@@ -125,12 +127,16 @@
         box-sizing: border-box;
         min-height: 470px;
         justify-content: flex-start;
+        transform: translateZ(0); /* Melhora a performance da animação */
+        will-change: transform; /* Otimização de performance */
       }
 
       .plan-card:hover {
         background-color: #1a2238;
         color: #a3c9ff;
         transform: translateY(-4px);
+        z-index: 1; /* Garante que o card em hover fique acima dos outros */
+        position: relative; /* Necessário para o z-index funcionar */
       }
 
       .plan-card:hover .btn {
@@ -213,6 +219,7 @@
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+        overflow: visible; /* Garante que o conteúdo não seja cortado */
       }
 
       .newsletter-form {
@@ -220,6 +227,10 @@
         flex-wrap: wrap;
         gap: 1rem;
         align-items: center;
+        padding: 5px 5px 15px; /* Ajuste fino no padding para evitar overflow */
+        margin: -5px 0;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .newsletter-form input[type="email"] {
@@ -230,10 +241,19 @@
         font-size: 1rem;
         color: #fff;
         background-color: #101214;
+        transition: border-color 0.3s ease;
+      }
+
+      .newsletter-form input[type="email"]:hover,
+      .newsletter-form input[type="email"]:focus {
+        border-color: #73adff;
+        outline: none;
       }
 
       .newsletter-btn {
         flex-shrink: 0;
+        position: relative; /* Ensure the button stays in the document flow */
+        z-index: 1; /* Keep button above other elements during hover */
       }
 
       .success-message {
@@ -278,7 +298,8 @@
       @media (max-width: 900px) {
         .plans-grid {
           grid-template-columns: repeat(1, 1fr);
-          gap: 1.2rem;
+          gap: 2rem; /* Aumentado o gap para melhor espaçamento */
+          padding: 1rem;
         }
         .plan-card {
           width: 100%;
