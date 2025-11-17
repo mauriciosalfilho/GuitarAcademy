@@ -9,7 +9,7 @@ def home():
 
     return render_template("index.html")
 
-@app.route("/cadastro-main", methods=["GET", "POST"])
+@app.route("/cadastro", methods=["GET", "POST"])
 def login_form():
 
     if request.method == "POST":
