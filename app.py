@@ -1,4 +1,6 @@
+from sqlite3 import connect
 from flask import Flask, redirect,request, render_template, jsonify
+from mysql import connector
 
 app = Flask(__name__)
 
@@ -25,6 +27,29 @@ def login_form():
         )
 
         print(dados)
+
+        # Fazendo a conexão com mysql
+
+        connect = connector.connect(
+            host = "localhost",
+            database = "GuitarAcademy",
+            user = "root",
+            password = "pjn@2024"
+        )
+
+        cursor = connect.cursor()
+
+        query = """
+            insert into signup (email, password, telefone, cpf) values
+            (%s, %s, %s, %s)
+        """
+
+        cursor.execute(query, dados)
+
+        connect.commit()
+
+        cursor.close()
+        connect.close()
 
         return redirect(("/"))
     
