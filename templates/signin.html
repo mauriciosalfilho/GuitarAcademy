@@ -24,8 +24,7 @@
       }
 
       html,
-      body,
-      .wrapper {
+      body {
         height: 100%;
         color: #fff;
         overflow: hidden;
@@ -77,24 +76,19 @@
         font-size: 1rem;
       }
 
-      .signup-main {
+      .signin-main {
         width: 100%;
         margin: 0;
         position: relative;
       }
 
-      .wizard-container {
-        position: relative;
-        width: 100%;
-      }
-
-      .signup-main input,
-      .signup-main button {
+      .signin-main input,
+      .signin-main button {
         width: 100%;
         font-family: inherit;
       }
 
-      .signup-main button {
+      .signin-main button {
         height: 50px;
       }
 
@@ -163,12 +157,11 @@
         border-color: #73adff;
       }
 
-      .signup-main button {
+      .signin-main button {
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 0.75rem 1.8rem;
-        height: 50px;
         background-color: #30363d;
         border: none;
         border-radius: 10px;
@@ -182,28 +175,31 @@
         user-select: none;
       }
 
-      .signup-main button:hover {
+      .signin-main button:hover {
         background-color: #a3c9ff;
         color: #1a2238;
         transform: translateY(-2px);
       }
 
-      .signup-main a {
+      .signin-main a {
         color: #a3c9ff;
         font-size: 0.9rem;
-        text-align: left;
         text-decoration: none;
-        margin-bottom: 6px;
         transition: color 0.3s ease;
       }
 
-      .signup-main a:hover {
+      .signin-main a:hover {
         color: #a3c9ff;
       }
 
-      .signup-link {
+      .signin-link {
         text-align: center;
         margin-top: 8px;
+      }
+
+      .form-container {
+        display: grid;
+        gap: 16px;
       }
 
       .wizard-page {
@@ -305,25 +301,19 @@
   <body>
     <div class="login-card">
       <i class="fa-solid fa-graduation-cap"></i>
-      <div class="signup-main">
-      <form action="/cadastro" id="wizardForm" method="post">
-        <div class="wizard-container">
-          <div class="wizard-page" id="page1">
-            <div class="form-group">
-              <input type="email" name="email" id="email" placeholder=" " required/>
-              <label for="email">E-mail</label>
-            </div>
-            <div class="form-group">
-              <input
-                type="tel"
-                name="telefone"
-                id="telefone"
-                placeholder=" "
-                maxlength="16"
-                required
-              />
-              <label for="telefone">Telefone</label>
-            </div>
+      <div class="signin-main">
+        {% if success %}
+          <div id="authSuccess" style="color: #cfe9ff; font-size: 0.9rem; text-align: center; background-color: #071022; border: 1px solid #73adff; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+            {{ success }}
+          </div>
+        {% endif %}
+        {% if error %}
+          <div id="authError" style="color: #ff6b6b; font-size: 0.9rem; text-align: center; background-color: #1a0a0a; border: 1px solid #ff6b6b; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+            {{ error }}
+          </div>
+        {% endif %}
+        <form action="/signin" id="signinForm" method="post">
+          <div class="form-container">
             <div class="form-group">
               <input
                 id="cpf"
@@ -339,120 +329,21 @@
             <div id="cpfError" style="color: #ff6b6b; font-size: 0.8rem; text-align: left; display: none; margin-top: -10px; margin-bottom: 5px;">
               CPF inválido!
             </div>
-            <div class="button-group single">
-              <button type="button" id="nextBtn">PRÓXIMO</button>
-            </div>
-          </div>
-          <div class="wizard-page hidden" id="page2">
+
             <div class="form-group">
               <input type="password" name="password" id="password" placeholder=" " required minlength="6"/>
               <label for="password">Senha</label>
             </div>
-            <div class="form-group">
-              <input type="password" name="confirm_password" id="confirm_password" placeholder=" " required>
-              <label for="confirm_password">Confirmar Senha</label>
-            </div>
-            <div id="passwordError" style="color: #ff6b6b; font-size: 0.8rem; text-align: left; display: none; margin-top: -10px; margin-bottom: 5px;">
-              As senhas não coincidem!
-            </div>
-            <div class="button-group">
-              <button type="button" id="backBtn">VOLTAR</button>
-              <button type="submit">CRIAR CONTA</button>
-            </div>
-        </div>
 
-        <p class="signup-link">Já tem uma conta? <a href="/login">Entrar</a></p>
-      </form>
-    </div>
+            <button type="submit">ENTRAR</button>
+          </div>
+
+          <p class="signin-link">Ainda não tem uma conta? <a href="/cadastro">Cadastre-se</a></p>
+        </form>
+      </div>
     </div>
     <script>
-      const page1 = document.getElementById("page1");
-      const page2 = document.getElementById("page2");
-      const nextBtn = document.getElementById("nextBtn");
-      const backBtn = document.getElementById("backBtn");
-      const form = document.getElementById("wizardForm");
-
-      nextBtn.addEventListener("click", () => {
-        const email = document.getElementById("email");
-        const telefone = document.getElementById("telefone");
-        const cpf = document.getElementById("cpf");
-        const cpfError = document.getElementById("cpfError");
-
-        if (email.value && telefone.value && cpf.value) {
-          if (!validaCPF(cpf.value)) {
-            cpfError.style.display = 'block';
-            cpf.style.borderColor = '#ff6b6b';
-            return;
-          }
-
-          cpfError.style.display = 'none';
-          cpf.style.borderColor = '#2a2f36';
-
-          page1.classList.add("slide-out-left");
-
-          setTimeout(() => {
-            page1.classList.add("hidden");
-            page1.classList.remove("slide-out-left");
-            page2.classList.remove("hidden");
-            page2.classList.add("slide-in-left");
-
-            setTimeout(() => {
-              page2.classList.remove("slide-in-left");
-            }, 400);
-          }, 400);
-        } else {
-          email.reportValidity();
-          telefone.reportValidity();
-          cpf.reportValidity();
-        }
-      });
-
-      backBtn.addEventListener("click", () => {
-        page2.classList.add("slide-out-right");
-
-        setTimeout(() => {
-          page2.classList.add("hidden");
-          page2.classList.remove("slide-out-right");
-          page1.classList.remove("hidden");
-          page1.classList.add("slide-in-right");
-
-          setTimeout(() => {
-            page1.classList.remove("slide-in-right");
-          }, 400);
-        }, 400);
-      });
-
-      form.addEventListener("submit", (e) => {
-        const password = document.getElementById('password');
-        const confirmPassword = document.getElementById('confirm_password');
-        const passwordError = document.getElementById('passwordError');
-        
-        if (password.value !== confirmPassword.value) {
-          e.preventDefault();
-          passwordError.style.display = 'block';
-          password.style.borderColor = '#ff6b6b';
-          confirmPassword.style.borderColor = '#ff6b6b';
-          return false;
-        }
-        return true;
-      });
-      
-      // Adiciona validação em tempo real
-      document.getElementById('confirm_password').addEventListener('input', function() {
-        const password = document.getElementById('password');
-        const confirmPassword = this;
-        const passwordError = document.getElementById('passwordError');
-        
-        if (password.value !== confirmPassword.value) {
-          passwordError.style.display = 'block';
-          password.style.borderColor = '#ff6b6b';
-          confirmPassword.style.borderColor = '#ff6b6b';
-        } else {
-          passwordError.style.display = 'none';
-          password.style.borderColor = '#2a2f36';
-          confirmPassword.style.borderColor = '#2a2f36';
-        }
-      });
+      const form = document.getElementById("signinForm");
 
       const validaCPF = function(cpf) {
         cpf = cpf.replace(/[^\d]+/g,'');
@@ -488,6 +379,26 @@
         return true;   
       };
 
+      // Validação ao enviar o formulário
+      form.addEventListener("submit", (e) => {
+        const cpf = document.getElementById('cpf');
+        const cpfError = document.getElementById('cpfError');
+
+        // Validar CPF
+        if (!validaCPF(cpf.value)) {
+          e.preventDefault();
+          cpfError.style.display = 'block';
+          cpf.style.borderColor = '#ff6b6b';
+          return false;
+        } else {
+          cpfError.style.display = 'none';
+          cpf.style.borderColor = '#2a2f36';
+        }
+
+        return true;
+      });
+
+      // Formatação de CPF
       (function () {
         const cpfInput = document.getElementById("cpf");
         const cpfError = document.getElementById("cpfError");
@@ -546,45 +457,6 @@
           );
           const digits = text.replace(/\D/g, "").slice(0, 11);
           cpfInput.value = formatCPF(digits);
-        });
-      })();
-
-      (function () {
-        const telefoneInput = document.getElementById("telefone");
-        function formatTelefone(value) {
-          const digits = value.replace(/\D/g, "").slice(0, 11);
-          let formatted = "";
-          if (digits.length > 0) formatted += "(" + digits.slice(0, 2);
-          if (digits.length >= 3) formatted += ") " + digits.slice(2, 7);
-          if (digits.length >= 8) formatted += "-" + digits.slice(7, 11);
-          return formatted;
-        }
-
-        telefoneInput.addEventListener("input", (e) => {
-          const formatted = formatTelefone(e.target.value);
-          e.target.value = formatted;
-        });
-        telefoneInput.addEventListener("keydown", (e) => {
-          const allowed = [
-            "Backspace",
-            "ArrowLeft",
-            "ArrowRight",
-            "Delete",
-            "Tab",
-            "Home",
-            "End",
-          ];
-          if (allowed.includes(e.key)) return;
-          if (e.ctrlKey || e.metaKey) return;
-          if (!/^\d$/.test(e.key)) e.preventDefault();
-        });
-        telefoneInput.addEventListener("paste", (e) => {
-          e.preventDefault();
-          const text = (e.clipboardData || window.clipboardData).getData(
-            "text"
-          );
-          const digits = text.replace(/\D/g, "").slice(0, 11);
-          telefoneInput.value = formatTelefone(digits);
         });
       })();
     </script>

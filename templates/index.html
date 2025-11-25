@@ -226,15 +226,23 @@
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
-        align-items: center;
+        align-items: stretch;
         padding: 5px 5px 15px; /* Ajuste fino no padding para evitar overflow */
         margin: -5px 0;
         width: 100%;
         box-sizing: border-box;
       }
 
+      .newsletter-form form {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: 100%;
+        align-items: center;
+      }
+
       .newsletter-form input[type="email"] {
-        flex-grow: 1;
         padding: 0.75rem 1rem;
         border: 1px solid #2a2f36;
         border-radius: 10px;
@@ -242,6 +250,8 @@
         color: #fff;
         background-color: #101214;
         transition: border-color 0.3s ease;
+        flex: 1;
+        min-width: 200px;
       }
 
       .newsletter-form input[type="email"]:hover,
@@ -251,12 +261,13 @@
       }
 
       .newsletter-btn {
-        flex-shrink: 0;
         position: relative; /* Ensure the button stays in the document flow */
         z-index: 1; /* Keep button above other elements during hover */
+        align-self: center;
       }
 
       .success-message {
+        width: 100%;
         margin-top: 1rem;
         font-weight: 600;
         color: #73adff;
@@ -539,9 +550,9 @@
           Receba novidades, dicas exclusivas e promoções especiais diretamente
           no seu e-mail!
         </p>
+        <div class="newsletter-form">
         <form
-          class="newsletter-form"
-          onsubmit="return handleNewsletter(event)"
+          action="/newsletter" id="newsletter-registered" method="post"
           aria-label="Formulário de inscrição na newsletter"
         >
           <input
@@ -553,8 +564,9 @@
             aria-required="true"
           />
           <button type="submit" class="btn newsletter-btn">Inscrever-se</button>
-          <div id="msg" class="success-message" aria-live="polite"></div>
         </form>
+        <div id="msg" class="success-message" aria-live="polite"></div>
+        </div>
       </section>
     </main>
 
@@ -570,13 +582,6 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();
-
-      function handleNewsletter(event) {
-        event.preventDefault();
-        const msgDiv = document.getElementById("msg");
-        msgDiv.textContent = "Inscrito com sucesso!";
-        return false;
-      }
     </script>
   </body>
 </html>
