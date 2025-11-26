@@ -11,13 +11,14 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="/static/css/style-signin.css">
-    <title>Guitar Academy</title>
+    <link rel="stylesheet" href="/static/css/style-senha.css">
+    <title>Guitar Academy - Recuperar Senha</title>
   </head>
   <body>
     <div class="login-card">
       <i class="fa-solid fa-graduation-cap"></i>
-      <div class="signin-main">
+      <div class="senha-main">
+        <h2>Recuperar Senha</h2>
         {% if success %}
           <div id="authSuccess" style="color: #cfe9ff; font-size: 0.9rem; text-align: center; background-color: #071022; border: 1px solid #73adff; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
             {{ success }}
@@ -28,40 +29,27 @@
             {{ error }}
           </div>
         {% endif %}
-        <form action="/signin" id="signinForm" method="post">
+        <form action="/esqueci-senha" id="senhaForm" method="post">
           <div class="form-container">
             <div class="form-group">
               <input
-                id="cpf"
-                name="cpf"
+                id="email"
+                name="email"
+                type="email"
                 placeholder=" "
-                inputmode="numeric"
-                maxlength="14"
                 autocomplete="off"
                 required
               />
-              <label for="cpf">CPF</label>
-            </div>
-            <div id="cpfError" style="color: #ff6b6b; font-size: 0.8rem; text-align: left; display: none; margin-top: -10px; margin-bottom: 5px;">
-              CPF inválido!
+              <label for="email">E-mail</label>
             </div>
 
-            <div class="form-group">
-              <input type="password" name="password" id="password" placeholder=" " required minlength="6"/>
-              <label for="password">Senha</label>
-            </div>
+            <p class="ja-recebi"><a href="/login">Já recebi o email, continuar login</a></p>
 
-            <p class="forgot-password"><a href="/esqueci-senha">Esqueci a senha</a></p>
-
-            <button type="submit">ENTRAR</button>
+            <button type="submit">ENVIAR E-MAIL</button>
           </div>
-
-          <p class="signin-link">Ainda não tem uma conta? <a href="/cadastro">Cadastre-se</a></p>
         </form>
       </div>
     </div>
-
-    <script src="/static/js/signin.js"></script>
 
   </body>
 </html>

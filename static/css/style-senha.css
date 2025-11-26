@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+}
+
+html,
+body {
+  height: 100%;
+  color: #fff;
+  overflow: hidden;
+}
+
+body {
+  background: linear-gradient(to bottom,
+    #0d121f 0%,
+    #0a0f19 80%,
+    #0a0a0a 100%);
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0 24px;
+}
+
+.login-card {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  margin: 0 20px;
+  padding: 20px 30px 20px;
+  border-radius: 10px;
+  background: #101214;
+  border: 1px solid #2a2f36;
+  text-align: center;
+  color: #fff;
+  max-width: none;
+}
+
+.login-card i {
+  font-size: 48px;
+  color: #73adff;
+  margin-bottom: 12px;
+}
+
+.senha-main {
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+
+.senha-main h2 {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: #a3c9ff;
+}
+
+.senha-main h3 {
+  color: #ccc;
+  margin: 0 0 30px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.senha-main input,
+.senha-main button {
+  width: 100%;
+  font-family: inherit;
+}
+
+.senha-main button {
+  height: 50px;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.form-group input {
+  border: 1px solid #2a2f36;
+  font-size: 15px;
+  padding: 16px;
+  border-radius: 10px;
+  background-color: #101214;
+  color: #fff;
+  transition: border-color 0.3s ease;
+  width: 100%;
+}
+
+.form-group input:hover {
+  border-color: #73adff;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #73adff;
+  box-shadow: 0 0 10px rgba(115, 173, 255, 0.1);
+}
+
+button {
+  background-color: #73adff;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #101214;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  background-color: #5a8fe0;
+  box-shadow: 0 5px 15px rgba(115, 173, 255, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.ja-recebi {
+  text-align: center;
+  font-size: 0.85rem;
+  margin: 10px 0;
+}
+
+.ja-recebi a {
+  color: #73adff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.ja-recebi a:hover {
+  color: #a3d5ff;
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    margin: 0 10px;
+    padding: 20px 20px 20px;
+  }
+
+  .senha-main h2 {
+    font-size: 28px;
+  }
+}
