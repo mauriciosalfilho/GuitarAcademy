@@ -4,7 +4,6 @@ from mysql import connector
 from itsdangerous import URLSafeTimedSerializer
 from dotenv import load_dotenv
 import os
-from datetime import datetime, timedelta
 
 # Carregar variáveis de ambiente
 load_dotenv()
