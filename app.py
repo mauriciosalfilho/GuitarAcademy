@@ -24,7 +24,6 @@ mail = Mail(app)
 # Serializador de tokens
 serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
-# ===== FUNÇÕES AUXILIARES =====
 
 def gerar_token_reset(email):
     """Gera um token único e seguro para reset de senha (válido por 1 hora)"""
@@ -129,8 +128,8 @@ def enviar_email_newsletter(email):
                     <h2 style="color: #73adff; text-align: center;">Bem-vindo à Guitar Academy</h2>
                     <p>Olá,</p>
                     <p>Obrigado por se inscrever na nossa newsletter! Você receberá novidades sobre cursos, dicas e conteúdo exclusivo.</p>
-                    <p style="font-size: 0.9rem; color: #888;">Se quiser, adicione nosso email aos seus contatos para não perder mensagens importantes.</p>
-                    <p style="font-size: 0.85rem; color: #666; margin-top: 20px;">Atenciosamente,<br>Equipe Guitar Academy</p>
+                    <p style="font-size: 0.9rem; color: #ffffff;">Se quiser, adicione nosso email aos seus contatos para não perder mensagens importantes.</p>
+                    <p style="font-size: 0.85rem; color: #ffffff; margin-top: 20px;">Atenciosamente,<br>Equipe Guitar Academy</p>
                 </div>
             </body>
         </html>
