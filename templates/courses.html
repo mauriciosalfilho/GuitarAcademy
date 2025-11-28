@@ -1,17 +1,710 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <title>Aulas de Guitarra</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guitar Academy - Cursos</title>
+    <link rel="stylesheet" href="/static/css/courses.css" />
   </head>
   <body>
-    <h1>Cursos Disponíveis</h1>
-    <ul>
-      <li>Curso de Guitarra para Iniciantes</li>
-      <li>Curso Avançado de Técnicas de Guitarra</li>
-      <li>Curso de Teoria Musical Aplicada à Guitarra</li>
-      <li>Curso de Improvisação e Solo na Guitarra</li>
-    </ul>
+    <main class="page">
+      <header>
+        <div class="icon-circle">♪</div>
+        <h1>Aulas de Guitarra</h1>
+        <p class="subtitle">
+          Domine a guitarra no seu próprio ritmo. Dos acordes básicos às
+          técnicas avançadas, você tem tudo aqui em um só lugar.
+        </p>
+      </header>
+
+      <!-- BÁSICO -->
+      <section class="section">
+        <h2 class="section-title">Básico</h2>
+        <p class="section-subtitle">
+          Inicie sua jornada na guitarra com habilidades e técnicas
+          fundamentais.
+        </p>
+
+        <div class="cards-grid">
+          <!-- Segurando a Guitarra -->
+          <article class="card" data-modal="modal-holding-guitar">
+            <div class="card-header">
+              <h3 class="card-title">Segurando a Guitarra</h3>
+              <span class="card-arrow">›</span>
+            </div>
+            <p class="card-desc">
+              Aprenda a forma correta de segurar e posicionar a guitarra para
+              tocar com conforto e eficiência.
+            </p>
+            <div class="card-footer">
+              <span class="pill">
+                <span class="pill-dot"></span>
+                <span>10 min</span>
+              </span>
+              <span class="pill-level">Básico</span>
+            </div>
+          </article>
+
+          <!-- Acordes Abertos Básicos -->
+          <article class="card" data-modal="modal-open-chords">
+            <div class="card-header">
+              <h3 class="card-title">Acordes Abertos Básicos</h3>
+              <span class="card-arrow">›</span>
+            </div>
+            <p class="card-desc">
+              Domine os acordes abertos essenciais e aprenda a formar os cinco
+              acordes mais usados para tocar centenas de músicas.
+            </p>
+            <div class="card-footer">
+              <span class="pill">
+                <span class="pill-dot"></span>
+                <span>20 min</span>
+              </span>
+              <span class="pill-level">Básico</span>
+            </div>
+          </article>
+
+          <!-- Padrões Básicos de Ritmo -->
+          <article class="card" data-modal="modal-strumming">
+            <div class="card-header">
+              <h3 class="card-title">Padrões Básicos de Ritmo</h3>
+              <span class="card-arrow">›</span>
+            </div>
+            <p class="card-desc">
+              Desenvolva ritmo e tempo com padrões fundamentais de batida,
+              usando movimentos para baixo e para cima.
+            </p>
+            <div class="card-footer">
+              <span class="pill">
+                <span class="pill-dot"></span>
+                <span>15 min</span>
+              </span>
+              <span class="pill-level">Básico</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- INTERMEDIÁRIO -->
+      <section class="section">
+        <h2 class="section-title">Intermediário</h2>
+        <p class="section-subtitle">
+          Construa sua base e explore novos estilos de tocar guitarra.
+        </p>
+
+        <div class="cards-grid">
+          <!-- Acordes com Pestana -->
+          <article class="card" data-modal="modal-barre-chords">
+            <div class="card-header">
+              <h3 class="card-title">Introdução aos Acordes com Pestana</h3>
+              <span class="card-arrow">›</span>
+            </div>
+            <p class="card-desc">
+              Aprenda acordes móveis com pestana para tocar em qualquer
+              tonalidade e liberar o braço inteiro da guitarra.
+            </p>
+            <div class="card-footer">
+              <span class="pill">
+                <span class="pill-dot"></span>
+                <span>25 min</span>
+              </span>
+              <span class="pill-level">Intermediário</span>
+            </div>
+          </article>
+
+          <!-- Escala Pentatônica -->
+          <article class="card" data-modal="modal-pentatonic">
+            <div class="card-header">
+              <h3 class="card-title">A Escala Pentatônica</h3>
+              <span class="card-arrow">›</span>
+            </div>
+            <p class="card-desc">
+              Domine a escala pentatônica menor e use o Box 1 para improvisar em
+              rock, blues e muito mais.
+            </p>
+            <div class="card-footer">
+              <span class="pill">
+                <span class="pill-dot"></span>
+                <span>30 min</span>
+              </span>
+              <span class="pill-level">Intermediário</span>
+            </div>
+          </article>
+
+          <!-- Padrões de Fingerstyle -->
+          <article class="card" data-modal="modal-fingerstyle">
+            <div class="card-header">
+              <h3 class="card-title">Padrões de Fingerstyle</h3>
+              <span class="card-arrow">›</span>
+            </div>
+            <p class="card-desc">
+              Desenvolva independência entre polegar e dedos com padrões
+              clássicos de dedilhado para folk, pop e baladas.
+            </p>
+            <div class="card-footer">
+              <span class="pill">
+                <span class="pill-dot"></span>
+                <span>25 min</span>
+              </span>
+              <span class="pill-level">Intermediário</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- AVANÇADO -->
+      <section class="section">
+        <h2 class="section-title">Avançado</h2>
+        <p class="section-subtitle">
+          Domine técnicas complexas e amplie seu vocabulário harmônico e
+          melódico na guitarra.
+        </p>
+
+        <div class="cards-grid">
+          <!-- Voicings de Jazz -->
+          <article class="card" data-modal="modal-jazz-voicings">
+            <div class="card-header">
+              <h3 class="card-title">Voicings de Acordes de Jazz</h3>
+              <span class="card-arrow">›</span>
+            </div>
+            <p class="card-desc">
+              Explore acordes com 7ª, 9ª e 13ª, aprenda progressões 2–5–1 e
+              voicings modernos para compor e acompanhar em jazz.
+            </p>
+            <div class="card-footer">
+              <span class="pill">
+                <span class="pill-dot"></span>
+                <span>35 min</span>
+              </span>
+              <span class="pill-level">Avançado</span>
+            </div>
+          </article>
+
+          <!-- Modos e Teoria Modal -->
+          <article class="card" data-modal="modal-modes">
+            <div class="card-header">
+              <h3 class="card-title">Modos e Teoria Modal</h3>
+              <span class="card-arrow">›</span>
+            </div>
+            <p class="card-desc">
+              Entenda os sete modos derivados da escala maior e use cada um para
+              criar climas e cores diferentes nos solos.
+            </p>
+            <div class="card-footer">
+              <span class="pill">
+                <span class="pill-dot"></span>
+                <span>40 min</span>
+              </span>
+              <span class="pill-level">Avançado</span>
+            </div>
+          </article>
+
+          <article class="card" data-modal="modal-advanced-techniques">
+            <div class="card-header">
+              <h3 class="card-title">Técnicas Avançadas de Guitarra</h3>
+              <span class="card-arrow">›</span>
+            </div>
+            <p class="card-desc">
+              Desenvolva tapping, sweep picking, hybrid picking, legato, string
+              skipping e muito mais com foco em musicalidade.
+            </p>
+            <div class="card-footer">
+              <span class="pill">
+                <span class="pill-dot"></span>
+                <span>45 min</span>
+              </span>
+              <span class="pill-level">Avançado</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- MODAIS -->
+    <div class="modal-overlay" id="modal-holding-guitar" aria-hidden="true">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-holding-guitar-title"
+      >
+        <button class="modal-close" aria-label="Fechar">×</button>
+        <h2 class="modal-title" id="modal-holding-guitar-title">
+          Segurando a Guitarra
+        </h2>
+        <p class="modal-subtitle">
+          A forma como você segura a guitarra é fundamental para o conforto e
+          para a qualidade da sua técnica. Uma boa postura evita dores e permite
+          mover a mão com liberdade pelo braço do instrumento.
+        </p>
+
+        <h3 class="modal-heading">Posição Sentado</h3>
+        <ul class="modal-list">
+          <li>
+            Escolha a perna de apoio: a maioria dos iniciantes apoia a guitarra
+            na perna direita (se for destro).
+          </li>
+          <li>Mantenha as costas retas para evitar dores na coluna.</li>
+          <li>
+            Incline levemente o braço da guitarra para cima, em torno de 30–45
+            graus.
+          </li>
+          <li>
+            Relaxe os ombros; tensão nos ombros vai direto para a sua mão ao
+            tocar.
+          </li>
+        </ul>
+
+        <h3 class="modal-heading">Posição em Pé</h3>
+        <ul class="modal-list">
+          <li>
+            Use uma correia confortável, ajustada em uma altura parecida com a
+            posição sentado.
+          </li>
+          <li>
+            A guitarra deve ficar estável, sem “pular” quando você se mexe.
+          </li>
+          <li>
+            O braço que faz a palhetada deve cair naturalmente sobre o corpo da
+            guitarra.
+          </li>
+        </ul>
+
+        <h3 class="modal-heading">Pontos-Chave</h3>
+        <ul class="modal-list">
+          <li>Não aperte o braço da guitarra com força excessiva.</li>
+          <li>
+            Mantenha o polegar atrás do braço, e não por cima, pelo menos neste
+            estágio inicial.
+          </li>
+          <li>
+            Tente manter o punho o mais reto possível ao apertar as cordas.
+          </li>
+          <li>Faça pausas a cada 20 minutos para evitar fadiga.</li>
+          <li>
+            Pratique em frente ao espelho para conferir a postura com
+            frequência.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-open-chords" aria-hidden="true">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-open-chords-title"
+      >
+        <button class="modal-close" aria-label="Fechar">×</button>
+        <h2 class="modal-title" id="modal-open-chords-title">
+          Acordes Abertos Básicos
+        </h2>
+        <p class="modal-subtitle">
+          Acordes abertos são a base da maior parte das músicas para guitarra.
+          Eles usam cordas soltas e são tocados nos primeiros trastes do braço.
+        </p>
+
+        <h3 class="modal-heading">Os Cinco Acordes Essenciais</h3>
+        <ul class="modal-list">
+          <li>
+            <strong>G Maior (G)</strong><br />
+            3º traste, 6ª corda (E grave) – dedo anelar<br />
+            2º traste, 5ª corda (A) – dedo médio<br />
+            3º traste, 1ª corda (E agudo) – dedo mínimo<br />
+            Toque as seis cordas.
+          </li>
+          <li>
+            <strong>C Maior (C)</strong><br />
+            3º traste, 5ª corda (A) – anelar<br />
+            2º traste, 4ª corda (D) – médio<br />
+            1º traste, 2ª corda (B) – indicador<br />
+            Toque da 5ª corda para baixo (evite a 6ª).
+          </li>
+          <li>
+            <strong>D Maior (D)</strong><br />
+            2º traste, 3ª corda (G) – indicador<br />
+            3º traste, 2ª corda (B) – anelar<br />
+            2º traste, 1ª corda (E agudo) – médio<br />
+            Toque da 4ª corda para baixo.
+          </li>
+          <li>
+            <strong>E Menor (Em)</strong><br />
+            2º traste, 5ª corda (A) – médio<br />
+            2º traste, 4ª corda (D) – anelar<br />
+            Toque as seis cordas.
+          </li>
+          <li>
+            <strong>A Menor (Am)</strong><br />
+            1º traste, 2ª corda (B) – indicador<br />
+            2º traste, 4ª corda (D) – médio<br />
+            2º traste, 3ª corda (G) – anelar<br />
+            Toque da 5ª corda para baixo.
+          </li>
+        </ul>
+
+        <h3 class="modal-heading">Dicas de Prática</h3>
+        <ul class="modal-list">
+          <li>Comece devagar e foque em notas limpas, sem trastejar.</li>
+          <li>
+            Aperte as cordas com firmeza, mas sem exagero para não cansar a mão.
+          </li>
+          <li>Verifique se cada corda está soando claramente.</li>
+          <li>
+            Pratique as trocas entre os cinco acordes, criando pequenos ciclos.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-strumming" aria-hidden="true">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-strumming-title"
+      >
+        <button class="modal-close" aria-label="Fechar">×</button>
+        <h2 class="modal-title" id="modal-strumming-title">
+          Padrões Básicos de Ritmo
+        </h2>
+        <p class="modal-subtitle">
+          A batida é o que dá vida aos acordes. Um bom padrão de ritmo pode
+          fazer acordes simples soarem muito mais interessantes.
+        </p>
+
+        <h3 class="modal-heading">Somente Movimentos Para Baixo (↓)</h3>
+        <ul class="modal-list">
+          <li><strong>Padrão 1:</strong> ↓ ↓ ↓ ↓ – todas semínimas.</li>
+          <li>Contagem: 1 2 3 4.</li>
+        </ul>
+
+        <h3 class="modal-heading">Batidas Para Baixo e Para Cima (↓↑)</h3>
+        <ul class="modal-list">
+          <li>
+            <strong>Padrão 2:</strong> ↓ ↓ ↑ ↑ ↓ ↑ – contagem: 1 2 & 3 & 4 &.
+          </li>
+          <li><strong>Padrão 3:</strong> ↓ ↓ ↑ ↓ ↑ – contagem: 1 2 & 3 4 &.</li>
+          <li>
+            <strong>Padrão 4 (folk popular):</strong> ↓ ↓ ↑ ↓ ↑ ↓ ↑ – contagem:
+            1 2 & 3 & 4 &.
+          </li>
+        </ul>
+
+        <h3 class="modal-heading">Dicas de Prática</h3>
+        <ul class="modal-list">
+          <li>Use um metrônomo ou bata o pé para manter o tempo.</li>
+          <li>Comece bem devagar (por volta de 60 BPM).</li>
+          <li>
+            Mantenha o pulso solto; o movimento vem do punho, não do braço
+            inteiro.
+          </li>
+          <li>
+            Pratique primeiro com as cordas abafadas para focar apenas no ritmo.
+          </li>
+        </ul>
+
+        <h3 class="modal-heading">Erros Comuns</h3>
+        <ul class="modal-list">
+          <li>Tocar forte demais – deixe as cordas vibrarem naturalmente.</li>
+          <li>Ficar tenso no ombro ou braço.</li>
+          <li>
+            Perder a regularidade da batida – priorize o tempo antes da
+            velocidade.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-barre-chords" aria-hidden="true">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-barre-chords-title"
+      >
+        <button class="modal-close" aria-label="Fechar">×</button>
+        <h2 class="modal-title" id="modal-barre-chords-title">
+          Introdução aos Acordes com Pestana
+        </h2>
+        <p class="modal-subtitle">
+          Acordes com pestana usam um dedo para pressionar várias cordas ao
+          mesmo tempo. São acordes móveis, que podem ser deslocados ao longo do
+          braço para tocar em qualquer tonalidade.
+        </p>
+
+        <h3 class="modal-heading">Por que Aprender Acordes com Pestana?</h3>
+        <ul class="modal-list">
+          <li>Permitem tocar acordes em qualquer tom.</li>
+          <li>Destravaram o braço inteiro da guitarra.</li>
+          <li>Abrem caminho para músicas com acordes menos comuns.</li>
+          <li>Deixam o seu som mais “profissional”.</li>
+        </ul>
+
+        <h3 class="modal-heading">Acorde F Maior com Pestana</h3>
+        <ul class="modal-list">
+          <li>Indicador: faz a pestana em todas as cordas na 1ª casa.</li>
+          <li>Médio: 2ª casa, 3ª corda (G).</li>
+          <li>Anelar: 3ª casa, 5ª corda (A).</li>
+          <li>Mínimo: 3ª casa, 4ª corda (D).</li>
+        </ul>
+
+        <h3 class="modal-heading">Dicas para Ter Sucesso</h3>
+        <ul class="modal-list">
+          <li>Polegar atrás do braço, na altura da 1ª casa.</li>
+          <li>
+            Use mais a lateral do indicador, não a parte totalmente plana.
+          </li>
+          <li>Aperte perto do traste, não no meio do espaço.</li>
+          <li>Comece pequeno: treine primeiro pestanas com 2 ou 3 cordas.</li>
+        </ul>
+
+        <h3 class="modal-heading">Formatos com Base em E e A</h3>
+        <ul class="modal-list">
+          <li>
+            <strong>Forma de E:</strong> baseada no acorde E maior aberto; barre
+            com o indicador e use os outros dedos para formar o desenho na casa
+            seguinte.
+          </li>
+          <li>
+            <strong>Forma de A:</strong> baseada no acorde A maior; a pestana
+            cobre da 5ª corda para baixo, e um dedo (ou dois/tres) faz as notas
+            do acorde.
+          </li>
+        </ul>
+
+        <h3 class="modal-heading">Construindo Força</h3>
+        <ul class="modal-list">
+          <li>Não espere acordes perfeitos de primeira.</li>
+          <li>Pratique cerca de 5 minutos por dia focado em pestanas.</li>
+          <li>A mão vai ganhar força ao longo de 2–3 semanas.</li>
+          <li>Pare se sentir cãibra ou dor intensa.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-pentatonic" aria-hidden="true">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-pentatonic-title"
+      >
+        <button class="modal-close" aria-label="Fechar">×</button>
+        <h2 class="modal-title" id="modal-pentatonic-title">
+          A Escala Pentatônica
+        </h2>
+        <p class="modal-subtitle">
+          A escala pentatônica contém 5 notas e serve de base para solos de
+          rock, blues e muitos outros estilos. É fácil de soar bem e ótima para
+          improvisação.
+        </p>
+        <h3 class="modal-heading">Desenho em Lá Menor — Box 1</h3>
+        <ul class="modal-list">
+          <li>6ª corda (E): 5º e 8º trastes</li>
+          <li>5ª corda (A): 5º e 7º trastes</li>
+          <li>4ª corda (D): 5º e 7º trastes</li>
+          <li>3ª corda (G): 5º e 7º trastes</li>
+          <li>2ª corda (B): 5º e 8º trastes</li>
+          <li>1ª corda (E): 5º e 8º trastes</li>
+        </ul>
+        <h3 class="modal-heading">Como Praticar</h3>
+        <ul class="modal-list">
+          <li>Toque subindo e descendo lentamente, focando no som limpo.</li>
+          <li>Pratique usando bases de Am (Am — Dm — Em).</li>
+        </ul>
+        <h3 class="modal-heading">Para Que Serve?</h3>
+        <ul class="modal-list">
+          <li>Improvisação de solos rápidos e expressivos.</li>
+          <li>
+            Aplica-se a várias músicas, como "Sweet Child O' Mine" (Guns N'
+            Roses) ou "Sunshine of Your Love" (Cream).
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-fingerstyle" aria-hidden="true">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-fingerstyle-title"
+      >
+        <button class="modal-close" aria-label="Fechar">×</button>
+        <h2 class="modal-title" id="modal-fingerstyle-title">
+          Padrões de Fingerstyle
+        </h2>
+        <p class="modal-subtitle">
+          O dedilhado faz cada dedo cumprir um papel nos arpejos. É essencial
+          para sons melódicos e baladas.
+        </p>
+        <h3 class="modal-heading">Dedo por corda</h3>
+        <ul class="modal-list">
+          <li><b>p</b> (polegar) — baixos (cordas 6, 5, 4)</li>
+          <li><b>i</b> (indicador) — 3ª corda (G)</li>
+          <li><b>m</b> (médio) — 2ª corda (B)</li>
+          <li><b>a</b> (anular) — 1ª corda (E)</li>
+        </ul>
+        <h3 class="modal-heading">Três Padrões Clássicos</h3>
+        <ul class="modal-list">
+          <li>
+            <b>Travis picking:</b> Alterna baixo e agudo (ex: C maior:
+            polegar-3ª/p-m-p-i)
+          </li>
+          <li><b>Arpeggio:</b> p-i-m-a-m-i (ex: C: 5ª 3ª 2ª 1ª 2ª 3ª)</li>
+          <li>
+            <b>Clássico:</b> p-m-i-m (cria um fluir suave com acordes simples)
+          </li>
+        </ul>
+        <h3 class="modal-heading">Dicas</h3>
+        <ul class="modal-list">
+          <li>Comece devagar e use metrônomo (40-60 BPM).</li>
+          <li>Foque na clareza entre notas e constância do polegar.</li>
+          <li>Dê preferência para acordes simples (C, Am, G).</li>
+          <li>Paciência — independência leva semanas para firmar!</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-jazz-voicings" aria-hidden="true">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-jazz-voicings-title"
+      >
+        <button class="modal-close" aria-label="Fechar">×</button>
+        <h2 class="modal-title" id="modal-jazz-voicings-title">
+          Voicings de Acordes de Jazz
+        </h2>
+        <p class="modal-subtitle">
+          Explore sons ricos com acordes de 7ª, 9ª, 13ª e progressões
+          sofisticadas, além de formas drop e substituições para tocar jazz.
+        </p>
+        <h3 class="modal-heading">Principais Tipos</h3>
+        <ul class="modal-list">
+          <li><b>Cmaj7:</b> X-3-5-4-5-X – som brilhante</li>
+          <li><b>C7:</b> X-3-2-3-1-X – som resolutivo</li>
+          <li><b>Cm7:</b> X-3-1-3-1-X – som suave</li>
+          <li>
+            <b>Drop2:</b> 3-3-5-4-X-X – acordes abertos, para acompanhamento
+          </li>
+        </ul>
+        <h3 class="modal-heading">Progressão 2–5–1</h3>
+        <ul class="modal-list">
+          <li>Dm7–G7–Cmaj7 (X-5-7-5-6-5 → 3-X-3-4-3-X → X-3-5-4-5-X)</li>
+        </ul>
+        <h3 class="modal-heading">Extensões</h3>
+        <ul class="modal-list">
+          <li><b>Cmaj9:</b> X-3-2-4-3-X</li>
+          <li><b>C13:</b> X-3-2-3-5-5</li>
+        </ul>
+        <h3 class="modal-heading">Estudo</h3>
+        <ul class="modal-list">
+          <li>Pratique encadeando acordes suavemente (voice leading).</li>
+          <li>Ouça Joe Pass, Wes Montgomery, George Benson.</li>
+          <li>Monte ritmos de acompanhamento (“comping”) com 3-4 notas.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-modes" aria-hidden="true">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-modes-title"
+      >
+        <button class="modal-close" aria-label="Fechar">×</button>
+        <h2 class="modal-title" id="modal-modes-title">Modos e Teoria Modal</h2>
+        <p class="modal-subtitle">
+          Os modos são sete escalas derivadas da escala maior, cada uma com
+          personalidade e aplicação únicas em improvisos e composições.
+        </p>
+        <h3 class="modal-heading">Os Sete Modos</h3>
+        <ul class="modal-list">
+          <li><b>Jônio:</b> Alegre, C-D-E-F-G-A-B (C)</li>
+          <li><b>Dórico:</b> Menor animado, D-E-F-G-A-B-C (D)</li>
+          <li><b>Frígio:</b> Espanhol/exótico, E-F-G-A-B-C-D (E)</li>
+          <li><b>Lídio:</b> Etéreo, F-G-A-B-C-D-E (F)</li>
+          <li><b>Mixo-lídio:</b> Blueseiro, G-A-B-C-D-E-F (G)</li>
+          <li><b>Eólio:</b> Menor natural, A-B-C-D-E-F-G (A)</li>
+          <li><b>Lócrio:</b> Instável, B-C-D-E-F-G-A (B)</li>
+        </ul>
+        <h3 class="modal-heading">Destaques de Prática</h3>
+        <ul class="modal-list">
+          <li>Pegue um acorde e pratique cada modo na mesma nota-raiz.</li>
+          <li>
+            Foque nas notas “características”: Lídio (#4), Mixolídio (b7), etc.
+          </li>
+          <li>Use vamps (bases de um ou dois acordes) e improvise.</li>
+          <li>Ouça: “So What” (Miles Davis), “Oye Como Va” (Santana).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="modal-overlay"
+      id="modal-advanced-techniques"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-advanced-techniques-title"
+      >
+        <button class="modal-close" aria-label="Fechar">×</button>
+        <h2 class="modal-title" id="modal-advanced-techniques-title">
+          Técnicas Avançadas de Guitarra
+        </h2>
+        <p class="modal-subtitle">
+          Domine técnicas que diferenciam guitarristas: tapping, sweep, hybrid
+          picking, legato, string skipping e muito mais.
+        </p>
+        <h3 class="modal-heading">Tapping (duas mãos)</h3>
+        <ul class="modal-list">
+          <li>Use um dedo da mão direita para “martelar” notas no braço.</li>
+          <li>Combine com pull-off e hammer-on para frases rápidas.</li>
+        </ul>
+        <h3 class="modal-heading">Sweep Picking</h3>
+        <ul class="modal-list">
+          <li>
+            Arraste a palheta suavemente por várias cordas, uma nota por corda,
+            para arpejos muito rápidos.
+          </li>
+          <li>
+            Pratique devagar, limpando cordas não usadas com a mão esquerda.
+          </li>
+        </ul>
+        <h3 class="modal-heading">Hybrid Picking</h3>
+        <ul class="modal-list">
+          <li>
+            Use o indicador e o médio junto com a palheta, para saltar cordas ou
+            acentuar notas agudas.
+          </li>
+        </ul>
+        <h3 class="modal-heading">Legato e String Skipping</h3>
+        <ul class="modal-list">
+          <li>
+            Execute hammer-ons e pull-offs encadeados e pule cordas para criar
+            linhas melódicas expressivas.
+          </li>
+        </ul>
+        <h3 class="modal-heading">Dicas Finais</h3>
+        <ul class="modal-list">
+          <li>Estude cada técnica isolada e aplique em frases musicais.</li>
+          <li>
+            Vá devagar, aumente BPM só quando a execução estiver perfeita.
+          </li>
+          <li>
+            Referências: Van Halen (tapping), Frank Gambale (sweep), Joe
+            Satriani (legato), Guthrie Govan (tudo!).
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="/static/js/courses.js" defer></script>
   </body>
 </html>

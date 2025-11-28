@@ -59,6 +59,26 @@ def email_existe_no_banco(email):
         print(f"Erro ao verificar email: {e}")
         return False
 
+def cpf_existe_no_banco(cpf):
+    """Verifica se o CPF já existe na tabela signup"""
+    try:
+        db = connector.connect(
+            host="localhost",
+            database="GuitarAcademy",
+            user="root",
+            password="pjn@2024"
+        )
+        cursor = db.cursor()
+        query = "SELECT cpf FROM signup WHERE cpf = %s"
+        cursor.execute(query, (cpf,))
+        result = cursor.fetchone()
+        cursor.close()
+        db.close()
+        return result is not None
+    except Exception as e:
+        print(f"Erro ao verificar CPF: {e}")
+        return False
+
 def enviar_email_reset(email, token):
     """Envia email com link de reset de senha"""
     try:
@@ -99,6 +119,38 @@ def enviar_email_reset(email, token):
         print(f"Erro ao enviar email: {e}")
         return False
 
+def enviar_email_newsletter(email):
+    """Envia email de boas-vindas para novos inscritos na newsletter"""
+    try:
+        subject = "Guitar Academy - Bem-vindo à nossa newsletter"
+        body = f"""
+        <html>
+            <body style="font-family: Arial, sans-serif; background-color: #1a1f2e; color: #ffffff; padding: 20px;">
+                <div style="background-color: #242a33; padding: 20px; border-radius: 10px; border: 1px solid #2a2f36;">
+                    <h2 style="color: #73adff; text-align: center;">Bem-vindo à Guitar Academy</h2>
+                    <p>Olá,</p>
+                    <p>Obrigado por se inscrever na nossa newsletter! Você receberá novidades sobre cursos, dicas e conteúdo exclusivo.</p>
+                    <p style="font-size: 0.9rem; color: #888;">Se quiser, adicione nosso email aos seus contatos para não perder mensagens importantes.</p>
+                    <p style="font-size: 0.85rem; color: #666; margin-top: 20px;">Atenciosamente,<br>Equipe Guitar Academy</p>
+                </div>
+            </body>
+        </html>
+        """
+
+        msg = Message(
+            subject=subject,
+            recipients=[email],
+            html=body,
+            sender=app.config['MAIL_USERNAME']
+        )
+
+        mail.send(msg)
+        print(f"Email de boas-vindas enviado para: {email}")
+        return True
+    except Exception as e:
+        print(f"Erro ao enviar email de boas-vindas: {e}")
+        return False
+
 def atualizar_senha_banco(email, nova_senha):
     """Atualiza a senha do usuário no banco de dados"""
     try:
@@ -120,7 +172,6 @@ def atualizar_senha_banco(email, nova_senha):
         print(f"Erro ao atualizar senha: {e}")
         return False
 
-# ===== FIM FUNÇÕES AUXILIARES =====
 
 @app.route("/")
 def home():
@@ -139,6 +190,16 @@ def login_form():
         
         # Remover formatação do CPF para salvar apenas dígitos
         cpf_clean = cpf.replace(".", "").replace("-", "")
+
+        # Validar se email já existe no banco
+        if email_existe_no_banco(email):
+            print(f"Tentativa de cadastro com email duplicado: {email}")
+            return jsonify({"success": False, "error": "Este email já está cadastrado. Verifique seus dados ou realize login"}), 400
+
+        # Validar se CPF já existe no banco
+        if cpf_existe_no_banco(cpf_clean):
+            print(f"Tentativa de cadastro com CPF duplicado: {cpf_clean}")
+            return jsonify({"success": False, "error": "Já existe um cadastro no seu CPF, verifique seus dados corretamente ou realize login"}), 400
 
         dados = (
             email,
@@ -186,7 +247,7 @@ def login():
  
     success_flag = request.args.get('success')
     if success_flag:
-        return render_template("signin.html", success="Cadastro feito com sucesso. Efetue login")
+        return render_template("signin.html", success="Senha alterada com sucesso. Realize login")
 
     return render_template("signin.html")
 
@@ -254,7 +315,7 @@ def forgot_password():
         
         # Verificar se o email existe no banco
         if not email_existe_no_banco(email):
-            return render_template("senha.html", error="Email não encontrado no banco de dados")
+            return render_template("senha.html", error="Seu email não esta cadastrado em nossa plataforma")
         
         # Gerar token seguro
         token = gerar_token_reset(email)
@@ -336,6 +397,15 @@ def registered():
 
             cursor.close()
             db.close()
+
+            # Tentar enviar email de boas-vindas (não bloquear o fluxo se falhar)
+            try:
+                if enviar_email_newsletter(email):
+                    print(f"Email de boas-vindas enviado para: {email}")
+                else:
+                    print(f"Falha ao enviar email de boas-vindas para: {email}")
+            except Exception as e:
+                print(f"Erro ao tentar enviar email de boas-vindas: {e}")
 
             return jsonify({"success": True, "message": "Inscrito com sucesso! "})
         

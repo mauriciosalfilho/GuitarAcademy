@@ -1,4 +1,3 @@
-// AJAX Newsletter Submission
 document.getElementById('newsletter-registered').addEventListener('submit', function (e) {
     e.preventDefault();
 

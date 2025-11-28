@@ -18,7 +18,7 @@
     <div class="login-card">
       <i class="fa-solid fa-graduation-cap"></i>
       <div class="senha-main">
-        <h2>Recuperar Senha</h2>
+        <h2>Redefinir Senha</h2>
         {% if success %}
           <div id="authSuccess" style="color: #cfe9ff; font-size: 0.9rem; text-align: center; background-color: #071022; border: 1px solid #73adff; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
             {{ success }}
@@ -43,13 +43,18 @@
               <label for="email">E-mail</label>
             </div>
 
-            <p class="ja-recebi"><a href="/login">Já recebi o email, continuar login</a></p>
-
-            <button type="submit">ENVIAR E-MAIL</button>
+            <button type="submit" id="submitBtn">ENVIAR E-MAIL</button>
+            
+            <!-- Loading spinner -->
+            <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+              <div class="spinner"></div>
+              <p>Enviando e-mail...</p>
+            </div>
           </div>
         </form>
       </div>
     </div>
 
+    <script src="/static/js/senha.js"></script>
   </body>
 </html>

@@ -88,7 +88,6 @@ function validarComprimento(senha) {
     }
 }
 
-// ===== EVENT LISTENERS =====
 
 /**
  * Atualizar indicador de força enquanto digita
