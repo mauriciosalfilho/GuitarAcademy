@@ -39,6 +39,8 @@ def verificar_token_reset(token, expiration=3600):
 
 def email_existe_no_banco(email):
     """Verifica se o email existe na tabela signup"""
+    db = None
+    cursor = None
     try:
         db = connector.connect(
             host="localhost",
@@ -46,19 +48,26 @@ def email_existe_no_banco(email):
             user="root",
             password="pjn@2024"
         )
-        cursor = db.cursor()
+        cursor = db.cursor(buffered=True)
         query = "SELECT email FROM signup WHERE email = %s"
         cursor.execute(query, (email,))
         result = cursor.fetchone()
+        exists = result is not None
         cursor.close()
         db.close()
-        return result is not None
+        return exists
     except Exception as e:
         print(f"Erro ao verificar email: {e}")
+        if cursor:
+            cursor.close()
+        if db:
+            db.close()
         return False
 
 def cpf_existe_no_banco(cpf):
     """Verifica se o CPF já existe na tabela signup"""
+    db = None
+    cursor = None
     try:
         db = connector.connect(
             host="localhost",
@@ -66,15 +75,20 @@ def cpf_existe_no_banco(cpf):
             user="root",
             password="pjn@2024"
         )
-        cursor = db.cursor()
+        cursor = db.cursor(buffered=True)
         query = "SELECT cpf FROM signup WHERE cpf = %s"
         cursor.execute(query, (cpf,))
         result = cursor.fetchone()
+        exists = result is not None
         cursor.close()
         db.close()
-        return result is not None
+        return exists
     except Exception as e:
         print(f"Erro ao verificar CPF: {e}")
+        if cursor:
+            cursor.close()
+        if db:
+            db.close()
         return False
 
 def enviar_email_reset(email, token):
@@ -147,6 +161,33 @@ def enviar_email_newsletter(email):
         return True
     except Exception as e:
         print(f"Erro ao enviar email de boas-vindas: {e}")
+        return False
+
+def email_existe_na_newsletter(email):
+    """Verifica se o email já está cadastrado na newsletter"""
+    db = None
+    cursor = None
+    try:
+        db = connector.connect(
+            host="localhost",
+            database="GuitarAcademy",
+            user="root",
+            password="pjn@2024"
+        )
+        cursor = db.cursor(buffered=True)
+        query = "SELECT email FROM newsletter WHERE email = %s"
+        cursor.execute(query, (email,))
+        result = cursor.fetchone()
+        exists = result is not None
+        cursor.close()
+        db.close()
+        return exists
+    except Exception as e:
+        print(f"Erro ao verificar email na newsletter: {e}")
+        if cursor:
+            cursor.close()
+        if db:
+            db.close()
         return False
 
 def atualizar_senha_banco(email, nova_senha):
@@ -300,7 +341,7 @@ def signin():
         
         except Exception as e:
             print(f"Erro ao conectar ao banco de dados: {e}")
-            return render_template("signin.html", error="Erro ao conectar ao banco de dados")
+            return render_template("signin.html", error="Erro ao verificar seus dados. Tente novamente mais tarde.")
     
     return render_template("signin.html")
 
@@ -371,6 +412,11 @@ def registered():
         if not email:
             return jsonify({"success": False, "error": "Email é obrigatório"}), 400
 
+        # Verificar se email já existe na newsletter
+        if email_existe_na_newsletter(email):
+            print(f"Tentativa de inscrição com email duplicado na newsletter: {email}")
+            return jsonify({"success": False, "duplicate": True, "message": "Você já faz parte da nossa newsletter, aguarde por mais novidades"}), 400
+
         params = (email,)
 
         print(params)
@@ -409,7 +455,7 @@ def registered():
         
         except Exception as e:
             print(f"Erro ao inscrever na newsletter: {e}")
-            return jsonify({"success": False, "error": "Erro ao inscrever na newsletter"}), 400
+            return jsonify({"success": False, "error": "Erro ao se inscrever na Newsletter , tente novamente mais tarde"}), 400
     
     return redirect(("/"))
 if __name__ == "__main__":
